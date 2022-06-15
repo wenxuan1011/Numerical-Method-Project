@@ -67,8 +67,17 @@ class Result_Page():
             self.bak.create_window(155, 420, anchor=tk.NW, window = self.suggest_label)
 
 
-        self.win.mainloop()
+        # create a button to go to next page
+        self.button = tk.Button(self.frame, width = 8, height = 1, text = 'RESTART', \
+                                      font = ('Arial', 18, 'bold'), border=0, command = self.restart)
+        self.bak.create_window(610, 400, anchor=tk.NW, window=self.button)
+
+        self.frame.mainloop()
         pass
+
+    def restart(self):
+        self.frame.destroy()
+        self.frame.quit()
 
     def get_the_reuslt(self):
         number_list = []

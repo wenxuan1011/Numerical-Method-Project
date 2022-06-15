@@ -46,7 +46,7 @@ class GeneticAlgorithm():
     def D2B(self, num):
         return [int(i) for i in (bin(10)[2:])]
     
-    # Rastrigin function
+    # Fitness function
     def fun(self, pop):
         X = np.array(pop)
         funsum = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
@@ -58,6 +58,7 @@ class GeneticAlgorithm():
             funsum[i] = abs(self.calories - funsum[i])
         return funsum
 
+    # Check is the METs in the range or not
     def check_range(self, number):
         if(self.intensity == 'Moderate intensity (from 3.1-6.0 METs)'):
             if(3 < self.data.iat[number, 1] <= 6):
@@ -72,9 +73,8 @@ class GeneticAlgorithm():
         else:
             return True
     
-    
-    # Selection method 2
-    def Selection(self, n, pop_bin, fitness):
+    # Roulette Wheel Selection
+    def Selection(self, pop_bin, fitness):
         select_bin = pop_bin.copy()
         fitness1 = fitness.copy()
         Parents = []
@@ -89,7 +89,7 @@ class GeneticAlgorithm():
             for i in range(len(NorParent)):
                 tep += NorParent[i]
                 Cumulist.append(tep)
-            #Find parents
+            # Find parents
             for i in range(self.n):
                 z1 = random.uniform(0,1)
                 for pick in range(len(Cumulist)):
@@ -110,28 +110,30 @@ class GeneticAlgorithm():
         child_1 = []
         child_2 = []
         for i in range(len(parent1)):
-            # 隨機生成一數字，用以決定是否進行Crossover
+            # Random a number in 0~1 to decide doing Crossover or not
             z1 = random.uniform(0,1)
             if z1 < self.cr:
                 z2 = random.uniform(0,1)
-                # 決定要交換的位置點
+                # Decide a point to do Crossover
                 cross_location = math.ceil(z2*(len(parent1[i])-1))
                 # Crossover
-                parent1[i][:cross_location],parent2[i][:cross_location] = swap_machine(parent1[i][:cross_location],parent2[i][:cross_location])
+                parent1[i][:cross_location], parent2[i][:cross_location] = swap_machine(parent1[i][:cross_location], \
+                    parent2[i][:cross_location])
                 p_list = [parent1[i], parent2[i]]
-                # 隨機生成一數字，用以決定是否進行mutation
+                # Random a number in 0~1 to decide doing Mutation or not
                 for i in range(len(p_list)):
-                    a = True  ####################
-                    while(a == True):  ####################
+                    # Add a while loop to check the intensity is in the range or not
+                    a = True  
+                    while(a == True):  
                         z3 = random.uniform(0,1)
                         if z3 < self.mr:
-                            # 決定要mutate的數字
+                            # Decide a number to do Mutation
                             z4 = random.uniform(0,1)
                             temp_location = z4*(len(p_list[i])-1)
                             mutation_location = 0 if temp_location < 0.5 else math.ceil(temp_location)
                             p_list[i][mutation_location] = 0 if p_list[i][mutation_location] == 1 else 1
-                        if(self.check_range(self.B2D(p_list[i])) == True):  ####################
-                                a = False  ####################
+                        if(self.check_range(self.B2D(p_list[i])) == True):
+                                a = False
                 child_1.append(p_list[0])
                 child_2.append(p_list[1])
                 
@@ -162,7 +164,7 @@ def run_main(weight, intensity, duration, calories):
 
     it = 0
     while it < ga.max_iter:
-        Parents_list = ga.Selection(ga.n, pop_bin, fitness)
+        Parents_list = ga.Selection(pop_bin, fitness)
         Offspring_list = []
         for i in range(int((ga.N-ga.n)/2)):
             candidate = [Parents_list[random.randint(0,len(Parents_list)-1)] for i in range(2)]

@@ -70,7 +70,7 @@ class Second_Page():
                                       font = ('Arial', 18, 'bold'), border=0, command = self.next_page)
         self.bak.create_window(610, 400, anchor=tk.NW, window=self.button)
 
-        self.win.mainloop()
+        self.frame.mainloop()
         pass
 
     def check_enter_or_not(self):
@@ -93,6 +93,7 @@ class Second_Page():
             print(self.duration_value)
             print(type(self.duration_value))
             Result_Page(self.win, self.weight_value, self.intensity_value, self.duration_value, self.calories_value)
+            self.frame.quit()
         else:
             win = tk.Tk()
             win.title('Error')
