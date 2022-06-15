@@ -90,8 +90,6 @@ class Second_Page():
         self.check_enter_or_not()
         if(self.weight_check == True and self.duration_check == True and self.calories_check == True):
             self.frame.destroy()
-            print(self.duration_value)
-            print(type(self.duration_value))
             Result_Page(self.win, self.weight_value, self.intensity_value, self.duration_value, self.calories_value)
             self.frame.quit()
         else:

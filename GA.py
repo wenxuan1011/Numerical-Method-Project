@@ -143,7 +143,6 @@ class GeneticAlgorithm():
         return child_1,child_2
 
 def run_main(weight, intensity, duration, calories):
-    #print(duration)
     ga = GeneticAlgorithm(weight, intensity, duration, calories)
     print(ga.N, ga.D, ga.B)
     pop_bin = ga.generatePopulation()
@@ -184,12 +183,12 @@ def run_main(weight, intensity, duration, calories):
         # Final fitness
         final_fitness = ga.fun(final_dec)
 
-        #Take the best value in this iteration
+        # Take the best value in this iteration
         smallest_fitness = min(final_fitness)
         index = final_fitness.index(smallest_fitness)
         smallest_dec = final_dec[index]
 
-        #Store the best fitness in the list
+        # Store the best fitness in the list
         best_rvlist.append(smallest_dec)
         best_valuelist.append(smallest_fitness)
 
@@ -212,7 +211,7 @@ def run_main(weight, intensity, duration, calories):
 
     print('The best fitness: ', min(best_valuelist))
     best_index = best_valuelist.index(min(best_valuelist))
-    print('Setup list is: ')
+    print('Best item list: ')
     print(best_rvlist[best_index])
 
     return(min(best_valuelist), best_rvlist[best_index])
