@@ -1,0 +1,39 @@
+﻿項目,METs,Image
+Slow Walking (4 km/hr),3.5,walking
+Fast Walking (5 km/hr),5.5,walking
+Stair Climbing (down),3.2,stair climbing
+Stair Climbing (up),8.4,stair climbing
+Slow Running (8km/hr),8.2,slow running
+Fast Running (12km/hr),12.7,fast running
+Fast Running (16km/hr),16.8,fast running
+"Biking (regular, 10km/hr)",4,biking
+"Biking (fast, 20km/hr)",8.4,biking
+"Biking (very fast, 30km/hr)",12.6,biking
+Yoga,3,yoga
+Slow Dancing,3.1,slow dancing
+"Fast Dancing, International Standard",5.3,fast dancing
+Frisbee,3.2,frisbee
+Volleyball,3.6,volleyball
+Bowling,4,bowling
+Golf,3.7,golf
+Table tennis,4.2,table tennis
+"Baseball, Softball",4.7,baseball
+Skating,5.1,skating
+Badminton,5.1,badminton
+Swimming (slow),6.3,swimming
+Swimming (fast),10,swimming
+Basketball (half court),6.3,basketball
+Basketball (full court),8.3,basketball
+Rock climbing,7,rock climbing
+Tennis,6.6,tennis
+Football,7.7,football
+Jump rope (slow),8.4,jump rope
+Jump rope (fast),12.6,jump rope
+Aerobic dance,6.8,aerobic dance
+Tai Chi,4.2,Tai Chi
+,,
+,,
+,,
+,,
+,,
+,,
