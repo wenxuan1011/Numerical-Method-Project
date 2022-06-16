@@ -98,7 +98,6 @@ class Second_Page():
             win.geometry('200x200')
             label = tk.Label(win, text = '尚有輸入未填寫', font = ('Arial', 14))
             label.place(x=50, y=50)
-            win.mainloop()
         return
 
 if __name__ == '__main__':
